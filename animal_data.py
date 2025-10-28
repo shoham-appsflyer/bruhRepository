@@ -1,0 +1,25 @@
+CRITICALLY_ENDANGERED_ANIMALS = [
+    {"name": "Javan Rhino", "status": "Critically Endangered", "scientific_name": "Rhinoceros sondaicus"},
+    {"name": "Vaquita", "status": "Critically Endangered", "scientific_name": "Phocoena sinus"},
+    {"name": "Amur Leopard", "status": "Critically Endangered", "scientific_name": "Panthera pardus orientalis"},
+    {"name": "Black Rhino", "status": "Critically Endangered", "scientific_name": "Diceros bicornis"},
+    {"name": "Bornean Orangutan", "status": "Critically Endangered", "scientific_name": "Pongo pygmaeus"},
+    {"name": "Cross River Gorilla", "status": "Critically Endangered", "scientific_name": "Gorilla gorilla diehli"},
+    {"name": "Hawksbill Turtle", "status": "Critically Endangered", "scientific_name": "Eretmochelys imbricata"},
+    {"name": "Saola", "status": "Critically Endangered", "scientific_name": "Pseudoryx nghetinhensis"},
+    {"name": "South China Tiger", "status": "Critically Endangered", "scientific_name": "Panthera tigris amoyensis"},
+    {"name": "Sumatran Elephant", "status": "Critically Endangered", "scientific_name": "Elephas maximus sumatranus"},
+    {"name": "Sumatran Orangutan", "status": "Critically Endangered", "scientific_name": "Pongo abelii"},
+    {"name": "Sumatran Rhino", "status": "Critically Endangered", "scientific_name": "Dicerorhinus sumatrensis"},
+    {"name": "Sunda Tiger", "status": "Critically Endangered", "scientific_name": "Panthera tigris sondaica"},
+    {"name": "Yangtze Finless Porpoise", "status": "Critically Endangered", "scientific_name": "Neophocaena asiaeorientalis"},
+    {"name": "Philippine Eagle", "status": "Critically Endangered", "scientific_name": "Pithecophaga jefferyi"},
+    {"name": "Kakapo", "status": "Critically Endangered", "scientific_name": "Strigops habroptilus"},
+    {"name": "Addax", "status": "Critically Endangered", "scientific_name": "Addax nasomaculatus"},
+    {"name": "Chinese Pangolin", "status": "Critically Endangered", "scientific_name": "Manis pentadactyla"},
+    {"name": "Mountain Gorilla", "status": "Critically Endangered", "scientific_name": "Gorilla beringei beringei"},
+    {"name": "Siamese Crocodile", "status": "Critically Endangered", "scientific_name": "Crocodylus siamensis"},
+]
+
+EXTINCT_ANIMALS = []
+

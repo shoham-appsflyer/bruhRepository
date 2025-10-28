@@ -3,6 +3,8 @@ import tkinter as tk
 from tkinter import ttk
 from typing import List, Dict
 
+from animal_data import CRITICALLY_ENDANGERED_ANIMALS, EXTINCT_ANIMALS
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -23,6 +25,14 @@ class AnimalCard(ttk.Frame):
             font=('Arial', 14, 'bold')
         )
         name_label.pack(pady=(10, 5), padx=10, anchor=tk.W)
+        
+        scientific_label = ttk.Label(
+            self,
+            text=f"Scientific: {self.animal_data['scientific_name']}",
+            font=('Arial', 9, 'italic'),
+            foreground='gray'
+        )
+        scientific_label.pack(pady=(0, 5), padx=10, anchor=tk.W)
         
         status_label = ttk.Label(
             self,
@@ -76,6 +86,7 @@ class EndangeredAnimalsApp:
         self.root.title("Endangered & Extinct Animals")
         self.root.geometry("600x700")
         self._create_widgets()
+        self._load_animals()
         logger.info("Application initialized successfully")
         
     def _create_widgets(self) -> None:
@@ -90,6 +101,12 @@ class EndangeredAnimalsApp:
         self.animal_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=(0, 20))
         
         logger.info("Main widgets created successfully")
+        
+    def _load_animals(self) -> None:
+        all_animals = CRITICALLY_ENDANGERED_ANIMALS + EXTINCT_ANIMALS
+        for animal in all_animals:
+            self.animal_frame.add_animal(animal)
+        logger.info(f"Loaded {len(all_animals)} animals into display")
 
 
 def main() -> None:
