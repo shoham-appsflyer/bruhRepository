@@ -18,6 +18,7 @@ class AnimalCard(ttk.Frame):
         super().__init__(parent, relief=tk.RAISED, borderwidth=2)
         self.animal_data = animal_data
         self._create_widgets()
+        logger.debug(f"Created card for {animal_data['name']}")
         
     def _create_widgets(self) -> None:
         content_frame = ttk.Frame(self)
@@ -75,19 +76,25 @@ class ScrollableAnimalFrame(ttk.Frame):
         self.canvas.pack(side="left", fill="both", expand=True)
         self.scrollbar.pack(side="right", fill="y")
         
+        self._bind_mousewheel()
         logger.info("Scrollable animal frame created successfully")
+        
+    def _bind_mousewheel(self) -> None:
+        self.canvas.bind_all("<MouseWheel>", self._on_mousewheel)
+        self.canvas.bind_all("<Button-4>", self._on_mousewheel)
+        self.canvas.bind_all("<Button-5>", self._on_mousewheel)
+        
+    def _on_mousewheel(self, event: tk.Event) -> None:
+        if event.num == 4 or event.delta > 0:
+            self.canvas.yview_scroll(-1, "units")
+        elif event.num == 5 or event.delta < 0:
+            self.canvas.yview_scroll(1, "units")
         
     def add_animal(self, animal_data: Dict[str, str]) -> None:
         self.animals.append(animal_data)
         card = AnimalCard(self.scrollable_frame, animal_data)
         card.pack(fill=tk.X, padx=10, pady=5)
-        logger.info(f"Added animal: {animal_data['name']}")
-        
-    def clear_animals(self) -> None:
-        for widget in self.scrollable_frame.winfo_children():
-            widget.destroy()
-        self.animals.clear()
-        logger.info("Cleared all animals from display")
+        logger.debug(f"Added animal: {animal_data['name']}")
 
 
 class EndangeredAnimalsApp:
@@ -95,6 +102,7 @@ class EndangeredAnimalsApp:
         self.root = root
         self.root.title("Endangered & Extinct Animals")
         self.root.geometry("600x700")
+        self.root.minsize(500, 400)
         self._create_widgets()
         self._load_animals()
         logger.info("Application initialized successfully")
