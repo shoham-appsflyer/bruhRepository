@@ -1,11 +1,14 @@
 import logging
-import os
+import warnings
 from io import BytesIO
 from pathlib import Path
 from typing import Optional
 
 import requests
 from PIL import Image
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
+warnings.filterwarnings('ignore', category=InsecureRequestWarning)
 
 logger = logging.getLogger(__name__)
 
@@ -70,7 +73,10 @@ def download_animal_image(animal_name: str) -> Optional[Image.Image]:
     
     try:
         logger.info(f"Downloading image for {animal_name}")
-        response = requests.get(url, timeout=10)
+        headers = {
+            'User-Agent': 'EndangeredAnimalsApp/1.0 (Educational Python Application)'
+        }
+        response = requests.get(url, timeout=10, headers=headers, verify=False)
         response.raise_for_status()
         
         img = Image.open(BytesIO(response.content))

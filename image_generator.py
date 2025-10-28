@@ -33,10 +33,10 @@ def create_animal_image(parent: tk.Widget, animal_name: str, width: int, height:
         logger.debug(f"Created real image for {animal_name}")
         return label
     else:
-        return create_placeholder_image(parent, width, height)
+        return create_placeholder_image(parent, animal_name, width, height)
 
 
-def create_placeholder_image(parent: tk.Widget, width: int, height: int) -> tk.Canvas:
+def create_placeholder_image(parent: tk.Widget, animal_name: str, width: int, height: int) -> tk.Canvas:
     color = random.choice(COLORS)
     canvas = tk.Canvas(
         parent, 
@@ -48,47 +48,18 @@ def create_placeholder_image(parent: tk.Widget, width: int, height: int) -> tk.C
     )
     
     center_x = width // 2
-    center_y = height // 2
+    center_y = width // 2
     
-    canvas.create_oval(
-        10, 10, width - 10, height - 10,
-        fill='white', 
-        outline='#666666',
-        width=2
-    )
-    
-    canvas.create_oval(
-        center_x - 8, center_y - 15, center_x + 8, center_y - 2,
-        fill='#333333',
-        outline=''
-    )
-    
-    canvas.create_oval(
-        center_x - 5, center_y - 12, center_x - 2, center_y - 8,
-        fill='white',
-        outline=''
-    )
-    canvas.create_oval(
-        center_x + 2, center_y - 12, center_x + 5, center_y - 8,
-        fill='white',
-        outline=''
-    )
-    
-    canvas.create_arc(
-        center_x - 8, center_y - 5, center_x + 8, center_y + 10,
-        start=180, extent=180,
-        fill='#333333',
-        outline=''
-    )
+    initials = ''.join([word[0] for word in animal_name.split()[:2]]).upper()
     
     canvas.create_text(
         center_x, 
-        height - 15,
-        text="ANIMAL",
-        font=('Arial', 8, 'bold'),
-        fill='#666666'
+        center_y,
+        text=initials,
+        font=('Arial', 28, 'bold'),
+        fill='white'
     )
     
-    logger.debug(f"Created placeholder image with color {color}")
+    logger.debug(f"Created placeholder for {animal_name} with color {color}")
     return canvas
 
