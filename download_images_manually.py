@@ -7,11 +7,14 @@ Usage:
 """
 import logging
 import time
+import warnings
 from pathlib import Path
 
 import requests
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
 from animal_data import CRITICALLY_ENDANGERED_ANIMALS, EXTINCT_ANIMALS
 
+warnings.filterwarnings('ignore', category=InsecureRequestWarning)
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -35,7 +38,7 @@ def download_image(animal_name: str) -> bool:
         headers = {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
         }
-        response = requests.get(url, timeout=20, headers=headers, allow_redirects=True)
+        response = requests.get(url, timeout=20, headers=headers, allow_redirects=True, verify=False)
         response.raise_for_status()
         
         with open(cache_path, 'wb') as f:
