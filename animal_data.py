@@ -21,5 +21,26 @@ CRITICALLY_ENDANGERED_ANIMALS = [
     {"name": "Siamese Crocodile", "status": "Critically Endangered", "scientific_name": "Crocodylus siamensis"},
 ]
 
-EXTINCT_ANIMALS = []
+EXTINCT_ANIMALS = [
+    {"name": "Dodo", "status": "Extinct", "scientific_name": "Raphus cucullatus"},
+    {"name": "Tasmanian Tiger", "status": "Extinct", "scientific_name": "Thylacinus cynocephalus"},
+    {"name": "Passenger Pigeon", "status": "Extinct", "scientific_name": "Ectopistes migratorius"},
+    {"name": "Woolly Mammoth", "status": "Extinct", "scientific_name": "Mammuthus primigenius"},
+    {"name": "Steller's Sea Cow", "status": "Extinct", "scientific_name": "Hydrodamalis gigas"},
+    {"name": "Great Auk", "status": "Extinct", "scientific_name": "Pinguinus impennis"},
+    {"name": "Caribbean Monk Seal", "status": "Extinct", "scientific_name": "Neomonachus tropicalis"},
+    {"name": "Quagga", "status": "Extinct", "scientific_name": "Equus quagga quagga"},
+    {"name": "West African Black Rhino", "status": "Extinct", "scientific_name": "Diceros bicornis longipes"},
+    {"name": "Baiji River Dolphin", "status": "Extinct", "scientific_name": "Lipotes vexillifer"},
+    {"name": "Golden Toad", "status": "Extinct", "scientific_name": "Incilius periglenes"},
+    {"name": "Pyrenean Ibex", "status": "Extinct", "scientific_name": "Capra pyrenaica pyrenaica"},
+    {"name": "Japanese Sea Lion", "status": "Extinct", "scientific_name": "Zalophus japonicus"},
+    {"name": "Toolache Wallaby", "status": "Extinct", "scientific_name": "Macropus greyi"},
+    {"name": "Atlas Bear", "status": "Extinct", "scientific_name": "Ursus arctos crowtheri"},
+    {"name": "Caspian Tiger", "status": "Extinct", "scientific_name": "Panthera tigris virgata"},
+    {"name": "Carolina Parakeet", "status": "Extinct", "scientific_name": "Conuropsis carolinensis"},
+    {"name": "Schomburgk's Deer", "status": "Extinct", "scientific_name": "Rucervus schomburgki"},
+    {"name": "Falkland Islands Wolf", "status": "Extinct", "scientific_name": "Dusicyon australis"},
+    {"name": "Moa", "status": "Extinct", "scientific_name": "Dinornithidae family"},
+]
 
