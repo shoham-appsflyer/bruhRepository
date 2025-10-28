@@ -1,9 +1,10 @@
 import logging
 import tkinter as tk
 from tkinter import ttk
-from typing import List, Dict
+from typing import Dict, List
 
 from animal_data import CRITICALLY_ENDANGERED_ANIMALS, EXTINCT_ANIMALS
+from image_generator import create_placeholder_image
 
 logging.basicConfig(
     level=logging.INFO,
@@ -19,28 +20,37 @@ class AnimalCard(ttk.Frame):
         self._create_widgets()
         
     def _create_widgets(self) -> None:
+        content_frame = ttk.Frame(self)
+        content_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+        
+        image_canvas = create_placeholder_image(content_frame, 80, 80)
+        image_canvas.pack(side=tk.LEFT, padx=(0, 10))
+        
+        text_frame = ttk.Frame(content_frame)
+        text_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        
         name_label = ttk.Label(
-            self,
+            text_frame,
             text=self.animal_data['name'],
             font=('Arial', 14, 'bold')
         )
-        name_label.pack(pady=(10, 5), padx=10, anchor=tk.W)
+        name_label.pack(pady=(5, 2), anchor=tk.W)
         
         scientific_label = ttk.Label(
-            self,
+            text_frame,
             text=f"Scientific: {self.animal_data['scientific_name']}",
             font=('Arial', 9, 'italic'),
             foreground='gray'
         )
-        scientific_label.pack(pady=(0, 5), padx=10, anchor=tk.W)
+        scientific_label.pack(pady=(0, 2), anchor=tk.W)
         
         status_label = ttk.Label(
-            self,
+            text_frame,
             text=f"Status: {self.animal_data['status']}",
             font=('Arial', 10),
             foreground='red' if self.animal_data['status'] == 'Extinct' else 'orange'
         )
-        status_label.pack(pady=(0, 10), padx=10, anchor=tk.W)
+        status_label.pack(pady=(0, 5), anchor=tk.W)
 
 
 class ScrollableAnimalFrame(ttk.Frame):
