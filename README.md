@@ -31,23 +31,43 @@ python main.py
 
 ## Adding Real Animal Images
 
-To display actual animal photos instead of initials:
+The app currently displays animal initials (e.g., "JR" for Javan Rhino) as placeholders. To show actual photos:
+
+### Option 1: Automatic Download (Recommended)
+
+Run the helper script to download images from Unsplash:
+
+```bash
+source venv/bin/activate
+python download_images_manually.py
+```
+
+This will automatically download images for all 40 animals into the `animal_images/` directory.
+
+### Option 2: Manual Download
 
 1. Create an `animal_images/` directory in the project root
-2. Add images named exactly as the animal (replace spaces with underscores):
+2. Download images from free sources:
+   - **Unsplash**: https://unsplash.com (free high-quality photos)
+   - **Pixabay**: https://pixabay.com (free stock photos)
+   - **Wikimedia Commons**: https://commons.wikimedia.org (free, CC-licensed)
+   - **Public Domain Review**: https://publicdomainreview.org/collection/extinct-animals
+3. Save images with exact animal names (replace spaces with underscores):
    - `Javan_Rhino.jpg`
    - `Vaquita.jpg`
    - `Dodo.jpg`
    - etc.
-3. Images will be automatically loaded and resized to 80x80 pixels
+4. Images will be automatically loaded and resized to 80x80 pixels
 
-### Where to Get Images
+**Note**: Automated downloading may fail due to SSL issues or rate limiting. If the helper script doesn't work, manually download images from the sources above.
 
-- **Wikimedia Commons**: https://commons.wikimedia.org (free, CC-licensed)
-- **iNaturalist**: https://www.inaturalist.org (community photos)
-- **Unsplash**: https://unsplash.com (free high-quality photos)
+### Troubleshooting Image Downloads
 
-**Note**: Ensure you have rights to use any images you add.
+If images aren't showing:
+1. Check that files are in `animal_images/` directory
+2. Verify filenames match exactly (e.g., `Javan_Rhino.jpg` not `javan-rhino.jpg`)
+3. Ensure images are valid JPEG format
+4. Restart the application after adding images
 
 ## Project Structure
 
