@@ -19,20 +19,55 @@ COLORS = [
 
 def create_placeholder_image(parent: tk.Widget, width: int, height: int) -> tk.Canvas:
     color = random.choice(COLORS)
-    canvas = tk.Canvas(parent, width=width, height=height, bg=color, highlightthickness=1, highlightbackground='#cccccc')
+    canvas = tk.Canvas(
+        parent, 
+        width=width, 
+        height=height, 
+        bg=color, 
+        highlightthickness=2, 
+        highlightbackground='#999999'
+    )
     
-    padding = 15
+    center_x = width // 2
+    center_y = height // 2
+    
     canvas.create_oval(
-        padding, padding, width - padding, height - padding,
-        fill='white', outline='', width=0
+        10, 10, width - 10, height - 10,
+        fill='white', 
+        outline='#666666',
+        width=2
+    )
+    
+    canvas.create_oval(
+        center_x - 8, center_y - 15, center_x + 8, center_y - 2,
+        fill='#333333',
+        outline=''
+    )
+    
+    canvas.create_oval(
+        center_x - 5, center_y - 12, center_x - 2, center_y - 8,
+        fill='white',
+        outline=''
+    )
+    canvas.create_oval(
+        center_x + 2, center_y - 12, center_x + 5, center_y - 8,
+        fill='white',
+        outline=''
+    )
+    
+    canvas.create_arc(
+        center_x - 8, center_y - 5, center_x + 8, center_y + 10,
+        start=180, extent=180,
+        fill='#333333',
+        outline=''
     )
     
     canvas.create_text(
-        width // 2,
-        height // 2,
-        text="🦁",
-        font=('Arial', 35),
-        fill=color
+        center_x, 
+        height - 15,
+        text="ANIMAL",
+        font=('Arial', 8, 'bold'),
+        fill='#666666'
     )
     
     logger.debug(f"Created placeholder image with color {color}")
