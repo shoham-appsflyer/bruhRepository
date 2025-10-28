@@ -4,7 +4,7 @@ from tkinter import ttk
 from typing import Dict, List
 
 from animal_data import CRITICALLY_ENDANGERED_ANIMALS, EXTINCT_ANIMALS
-from image_generator import create_placeholder_image
+from image_generator import create_animal_image
 
 logging.basicConfig(
     level=logging.INFO,
@@ -24,8 +24,8 @@ class AnimalCard(ttk.Frame):
         content_frame = ttk.Frame(self)
         content_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         
-        image_canvas = create_placeholder_image(content_frame, 80, 80)
-        image_canvas.pack(side=tk.LEFT, padx=(0, 10))
+        image_widget = create_animal_image(content_frame, self.animal_data['name'], 80, 80)
+        image_widget.pack(side=tk.LEFT, padx=(0, 10))
         
         text_frame = ttk.Frame(content_frame)
         text_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)

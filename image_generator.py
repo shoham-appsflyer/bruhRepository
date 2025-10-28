@@ -1,6 +1,11 @@
 import logging
 import random
 import tkinter as tk
+from typing import Optional
+
+from PIL import Image, ImageTk
+
+from image_downloader import download_animal_image, resize_image_for_display
 
 logger = logging.getLogger(__name__)
 
@@ -15,6 +20,20 @@ COLORS = [
     '#4A7C7E', '#D4939D', '#FFAFCC', '#BDE0FE', '#A2D2FF',
     '#CDB4DB', '#FFC8DD', '#FFAFCC', '#BDE0FE', '#A2D2FF'
 ]
+
+
+def create_animal_image(parent: tk.Widget, animal_name: str, width: int, height: int) -> tk.Label:
+    img = download_animal_image(animal_name)
+    
+    if img:
+        img = resize_image_for_display(img, width, height)
+        photo = ImageTk.PhotoImage(img)
+        label = tk.Label(parent, image=photo, width=width, height=height)
+        label.image = photo
+        logger.debug(f"Created real image for {animal_name}")
+        return label
+    else:
+        return create_placeholder_image(parent, width, height)
 
 
 def create_placeholder_image(parent: tk.Widget, width: int, height: int) -> tk.Canvas:
